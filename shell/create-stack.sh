@@ -14,7 +14,6 @@ aws s3 cp ../agent/ s3://$S3_ARTIFACT_BUCKET_NAME/agent/ --region $AWS_REGION --
 export BEDROCK_LANGCHAIN_PDFRW_LAYER_ARN=$(aws lambda publish-layer-version \
 	--layer-name bedrock-langchain-pdfrw \
 	--description "Bedrock LangChain pdfrw layer" \
-	--license-info "MIT" \
 	--content S3Bucket=$S3_ARTIFACT_BUCKET_NAME,S3Key=agent/lambda/lambda-layers/bedrock-langchain-pdfrw.zip \
 	--compatible-runtimes python3.11 \
 	--region $AWS_REGION \
@@ -23,7 +22,7 @@ export BEDROCK_LANGCHAIN_PDFRW_LAYER_ARN=$(aws lambda publish-layer-version \
 export CFNRESPONSE_LAYER_ARN=$(aws lambda publish-layer-version \
 	--layer-name cfnresponse \
 	--description "cfnresponse Layer" \
-	--license-info "MIT" \
+
 	--content S3Bucket=$S3_ARTIFACT_BUCKET_NAME,S3Key=agent/lambda/lambda-layers/cfnresponse-layer.zip \
 	--compatible-runtimes python3.11 \
 	--region $AWS_REGION \
